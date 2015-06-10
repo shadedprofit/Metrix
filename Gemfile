@@ -1,11 +1,35 @@
 source 'https://rubygems.org'
-
-# Use Twitter Bootstrap
-gem 'bootstrap-sass'
+# Use Redcarpet for formatting text in Markdown
+gem 'redcarpet'
+# Use Stripe for accepting payments
+gem 'stripe'
+# Use Faker to seed users and wikis
+gem 'faker'
+# Use Pundit for user authorization
+gem 'pundit'
+# Use Fog for storing images
+gem 'fog'
+# Use Carrierwave for uploading images
+gem 'carrierwave'
+# Use MiniMagick for manipulating images
+gem 'mini_magick'
+# Use Figaro for environment variables
+gem 'figaro', '1.0'
+# Use devise for user authentication
+gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
+# Use Twitter bootstrap
+gem 'bootstrap-sass'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+group :production do
+   gem 'pg'
+   gem 'rails_12factor'
+ end
+
+group :development do
+   gem 'sqlite3' 
+ end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
