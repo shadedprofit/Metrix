@@ -1,0 +1,22 @@
+<div class="container page-top">
+  <div class="media">
+      <div class="media-body">
+        <h2 class="media-heading text-center"><%= current_user.name.capitalize %>'s Registered Applications</h2>
+      </div>
+  </div>
+  <br />
+
+  <% @registered_applications.each do |registered_application| %>
+    <div class="media">
+      <div class="media-left">
+        <%= link_to "", registered_application.url, class: 'media-object glyphicon glyphicon-new-window' %>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading"><%= link_to registered_application.name, registered_application %></h4>
+
+        <p><%= link_to registered_application.url, registered_application %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
+
