@@ -6,7 +6,8 @@ class API::EventsController < ApplicationController
     registered_application = RegisteredApplication.find_by(url: request.env['HTTP_ORIGIN'])
     render json: "Unregistered application", status: :unprocessable_entity unless registered_application.present?
     if registered_application.present?
-      @event = registered_application.events.build(event_params)
+      @event = registered_application.events.create(event_params)
+      @event.registered_application = registered_application
 
       if @event.save
         render json: @event, status: :created
@@ -25,6 +26,6 @@ class API::EventsController < ApplicationController
   private 
 
   def event_params
-    params.permit(:event_name)
+    params.permit(:name)
   end
 end
