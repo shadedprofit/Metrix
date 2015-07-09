@@ -1,28 +1,30 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+INSTRUCTIONS FOR TRACKING AN APP
 
-* Ruby version
+1. After creating an account on the Blocmetrics site, Log In
 
-* System dependencies
+2. On the dropdown menu on the navigation bar, click on 'Add App'
 
-* Configuration
+3. Enter a name and url for the web application you wish to track (you can enter any name you like) and click 'save'
 
-* Database creation
+4. Once the app is registered, copy the following snippet and place it in the 'application.html' file on the site, before the </head> tag:
 
-* Database initialization
+<script>
+  (function (){
+    var _bm_event = {
+      name: "sale",
+      property_1: "some value",
+      property_2: "some other value"
+    };
 
-* How to run the test suite
+    var _bm_request = new XMLHttpRequest();
+    _bm_request.open("POST", "http://localhost:3000/api/events", true);
+    _bm_request.setRequestHeader('Content-Type', 'application/json');
+    _bm_request.onreadystatechange = function() {
+    };
+    _bm_request.send(JSON.stringify(_bm_event));
+  }());
+</script>
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
