@@ -1,4 +1,10 @@
 source 'https://rubygems.org'
+# Use MYSQL2
+gem 'mysql2'
+# Use Groupdate to group events by time
+gem 'groupdate'
+# Use Chartkick to graph events
+gem 'chartkick'
 # Use Redcarpet for formatting text in Markdown
 gem 'redcarpet'
 # Use Stripe for accepting payments
@@ -23,13 +29,10 @@ gem 'rails', '4.2.0'
 gem 'bootstrap-sass'
 # Use sqlite3 as the database for Active Record
 group :production do
-   gem 'pg'
+   
    gem 'rails_12factor'
  end
 
-group :development do
-   gem 'sqlite3' 
- end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

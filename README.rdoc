@@ -14,10 +14,10 @@ INSTRUCTIONS FOR TRACKING AN APP
 <script>
   (function (){
     var _bm_event = {
-      name: "sale",
+      name: "Event name",
       property_1: "some value",
       property_2: "some other value"
-    };
+    }
 
     var _bm_request = new XMLHttpRequest();
     _bm_request.open("POST", "http://localhost:3000/api/events", true);

@@ -1,36 +1,24 @@
 <div class="container">
-<h1 class="text-center"><%= @registered_application.name %></h1>
+  <h2 class="text-center">
+    <%= @registered_application.name %>
+    <small>
+      <%= @registered_application.url %>
+    </small>
+  </h2>
 
-<br />
-<div class="row">
-  <div class="col-md-8">
-    <p><%= @registered_application.url %></p>
-    <br />
-    <% if @registered_application.events.count == 1 %>
-      <h3 class="text-center"><%= @registered_application.events.count %> Event</h3>
-    <% else %>
-      <h3 class="text-center"><%= @registered_application.events.count %> Events</h3>
-    <% end %>
-    <table class="table table-striped table-hover table-bordered">
-      <thead>
-        <tr>
-          <th>Event Name</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @registered_application.events.each do |event| %>
-          <%= content_tag :tr, class: 'media', id: "event-#{event.id}" do %>
-            <td><%= event.name %></td>
-          <% end %>
-        <% end %>
-      </tbody>
-    </table>
-       
+  <br />
+  <div class="row">
+    <div class="col-md-6">
+      <%= pie_chart @registered_application.events.group(:name).count %>
+    </div>
+    <div class="col-md-6">
+      <%= line_chart @registered_application.events.group_by_day(:created_at).count %>
+    </div>
   </div>
-  <div class="col-md-4 text-center">
+
+  <div class="text-center">
     <%= link_to "Edit", edit_registered_application_path(@registered_application), class: 'btn btn-success' %>
   </div>
-</div>
 </div>
 
    

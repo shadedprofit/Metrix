@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     resources :events, only: [:create]
-    match 'create_event', to: 'events#create', via: [:options]
+    match 'events', to: 'events#create', via: [:options]
   end
 
   root to: 'welcome#index'

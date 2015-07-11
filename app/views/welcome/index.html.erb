@@ -6,9 +6,13 @@
     <p>Data analytics done right</p>
     <br />
     <p>
+    <% if current_user %>
+      <%= link_to "My Applications", registered_applications_path(@user), class: 'btn btn-primary' %>
+    <% else %>
       <%= link_to "Sign In", new_user_session_path, class: 'btn btn-primary' %> or 
       <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %>
-  </p>
+    <% end %>
+    </p>
     </div>
   </div>
   </div>
